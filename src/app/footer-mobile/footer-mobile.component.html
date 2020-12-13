@@ -1,0 +1,34 @@
+<footer class="footer">
+    <mat-toolbar class="footer" >
+            <div fxFlex fxLayout="row" fxLayoutAlign="space-between center">
+        
+              <button mat-button routerLink="/home" routerLinkActive="active-menu-item">
+                <div class="toolbar-icon">
+                  <mat-icon>dashboard</mat-icon>
+                </div>
+                <div class="toolbar-icon-text">
+                  <span>Dashboard</span>
+                </div>
+              </button>
+        
+              <button mat-button routerLink="/forums" routerLinkActive="active-menu-item">
+                <div class="toolbar-icon">
+                  <mat-icon>euro_symbol</mat-icon>
+                </div>
+                <div class="toolbar-icon-text">
+                  <span>Bedragen</span>
+                </div>
+              </button>
+      
+              <button mat-button (click)="onToggleSidenav()">
+                <div class="toolbar-icon">
+                  <mat-icon>menu</mat-icon>
+                </div>
+                <div class="toolbar-icon-text">
+                  <span>Meer</span>
+                </div>
+              </button>
+        
+            </div>
+    </mat-toolbar>
+  </footer>

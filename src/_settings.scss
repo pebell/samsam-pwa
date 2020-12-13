@@ -1,0 +1,58 @@
+@import '~@angular/material/theming';
+$md-samsampalette: (
+    50 : #f2e4e8,
+    100 : #debcc5,
+    200 : #c88f9e,
+    300 : #b16277,
+    400 : #a14159,
+    500 : #901f3c,
+    600 : #881b36,
+    700 : #7d172e,
+    800 : #731227,
+    900 : #610a1a,
+    A100 : #ff94a3,
+    A200 : #ff6177,
+    A400 : #ff2e4b,
+    A700 : #ff1435,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #ffffff,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #ffffff,
+        A700 : #ffffff,
+    )
+);
+$samsam-primary: mat-palette($md-samsampalette, 500, A200, 700);
+$samsam-accent:  mat-palette($mat-gray, 800, 400, 800);
+$samsam-warn:    mat-palette($mat-red);
+$samsam-theme:   mat-dark-theme($samsam-primary, $samsam-accent, $samsam-warn);
+
+$aovb-primary: mat-palette($mat-blue, 600, 400, 900);
+$aovb-accent:  mat-palette($mat-orange, 600, 600, 600);
+$aovb-warn:    mat-palette($mat-yellow);
+$aovb-theme:   mat-light-theme($aovb-primary, $aovb-accent, $aovb-warn);
+
+$bok-primary: mat-palette($mat-indigo, 900, 800, 900);
+$bok-accent:  mat-palette($mat-amber, 800, 700, 800);
+$bok-warn:    mat-palette($mat-red, 400);
+$bok-theme:   mat-light-theme($bok-primary, $bok-accent, $bok-warn);
+
+$skunk-gray: mat-palette($mat-gray, 800, 700, 900);
+
+$padding-lg: 32px;
+$padding-sm: 16px;
+$fab-margin: 16px;
+$fab-size: 56px;
+$fab-page-margin: $fab-margin + $fab-size;
+
+$max-sm: 959px;
+$max-xs: 599px;

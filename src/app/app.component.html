@@ -1,32 +1,23 @@
-<footer>
+<mat-sidenav-container fullscreen>
 
-<mat-toolbar color="primary" class="expanded-toolbar">
-  <span>
-    <button mat-button routerLink="/">{{title}}</button>
-    <button mat-button routerLink="/"><mat-icon>home</mat-icon></button>
-  </span>
-  <!-- <div fxLayout="row" fxShow="false" fxShow.gt-sm>
-      <form [formGroup]="searchForm" (ngSubmit)="onSearch()">
-        <div class="input-group">
-          <input class="input-group-field" type="search" value="" placeholder="Search" formControlName="search">
-          <div class="input-group-button"><button mat-flat-button color="accent"><mat-icon>search</mat-icon></button></div>
-        </div>
-      </form>
-  </div> -->
-  <button mat-button [mat-menu-trigger-for]="menu" fxHide="false" fxHide.gt-sm>
-   <mat-icon>menu</mat-icon>
-  </button>
-</mat-toolbar>
-</footer>
+  <mat-sidenav #sidenav role="navigation" mode="push">
+    <!-- <app-sidenav (sideNavClosed)="sidenav.close()"></app-sidenav> -->
+  </mat-sidenav>
 
-<mat-menu x-position="before" #menu="matMenu">
-  <button mat-menu-item routerLink="/"><mat-icon>home</mat-icon> Home</button>
+  <mat-sidenav-content fxLayout="column">
 
-  <!-- <form [formGroup]="searchForm" (ngSubmit)="onSearch()">
-    <div class="input-group">
-      <input class="input-group-field" type="search" value="" placeholder="Search" formControlName="search">
-      <div class="input-group-button"><button mat-button routerLink="/"><mat-icon>magnify</mat-icon></button></div>
+    <div class="header" *ngIf="appservice.showHeader$ | value">
+      <app-header-mobile fxHide fxShow.lt-sm>
+      </app-header-mobile>
     </div>
-  </form> -->
-</mat-menu>
-<router-outlet mat-app-background></router-outlet>
+
+    <main class="container mat-app-background">
+      <router-outlet></router-outlet>
+    </main>
+
+    <app-footer-mobile *ngIf="appservice.showFooter$ | value" (sidenavToggle)="sidenav.toggle()"  fxHide fxShow.lt-sm >
+    </app-footer-mobile>
+
+  </mat-sidenav-content>
+
+</mat-sidenav-container>

@@ -1,0 +1,27 @@
+@import '../../settings';
+
+footer {
+    position: fixed;
+    bottom: 0px;
+    overflow: hide;
+    width: 100%;
+    height: 56px; 
+  }
+
+  .toolbar-icon {
+    line-height: 0; // Set to zero or will affect spacing between icon and text
+    mat-icon {
+        font-size: 32px;
+        width: 32px;
+        height: 32px;
+    }
+}
+  
+  .toolbar-icon-text {
+    line-height: 1.8; // Proper spacing between icon and text
+    font-size: 90%; // Smaller text size for proper display under icon
+  }
+  
+  .active-menu-item {
+     color: mat-color($samsam-primary, lighter);
+  }

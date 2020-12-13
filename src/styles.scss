@@ -1,7 +1,4 @@
-
-// Custom Theming for Angular Material
-// For more information: https://material.angular.io/guide/theming
-@import '~@angular/material/theming';
+@import 'settings';
 // Plus imports for other components in your app.
 
 // Include the common styles for Angular Material. We include this here so that you only
@@ -12,9 +9,9 @@
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$samsam-pwa-primary: mat-palette($mat-indigo);
+$samsam-pwa-primary: $samsam-primary; //mat-palette(rgba(#901f3c,1.0)); //  mat-palette($mat-indigo);
 $samsam-pwa-accent: mat-palette($mat-pink, A200, A100, A400);
-$samsam-pwa-background-color: map_get($mat-gray, 900);
+$samsam-pwa-background-color: rgba(black, 1.0);
 // The warn palette is optional (defaults to red).
 $samsam-pwa-warn: mat-palette($mat-red);
 
