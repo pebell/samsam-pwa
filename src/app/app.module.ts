@@ -16,6 +16,8 @@ import { HeaderMobileComponent } from './header-mobile/header-mobile.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { NgxSherlockModule } from "@politie/ngx-sherlock";
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,8 @@ import { NgxSherlockModule } from "@politie/ngx-sherlock";
     MatSidenavModule,
     NgxSherlockModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [],
   bootstrap: [AppComponent]

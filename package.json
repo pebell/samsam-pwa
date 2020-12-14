@@ -22,6 +22,7 @@
     "@angular/platform-browser": "~9.0.2",
     "@angular/platform-browser-dynamic": "~9.0.2",
     "@angular/router": "~9.0.2",
+    "@angular/service-worker": "~9.0.2",
     "@politie/ngx-sherlock": "^2.0.0",
     "@politie/sherlock": "^3.1.0",
     "@politie/sherlock-rxjs": "^3.1.0",
