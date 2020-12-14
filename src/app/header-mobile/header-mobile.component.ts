@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AppService } from '../app.service';
 
 @Component({
   selector: 'app-header-mobile',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderMobileComponent implements OnInit {
 
-  constructor() { }
+  constructor(public readonly app: AppService) { }
 
   ngOnInit(): void {
   }

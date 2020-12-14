@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AppService } from './app.service';
+import { PwaService } from './pwa.service';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +10,7 @@ import { AppService } from './app.service';
 export class AppComponent {
   title = 'samsam-pwa';
 
-  constructor(public readonly appservice: AppService) {
+  constructor(public readonly app: AppService, public readonly pwa: PwaService) {
 
   }
 

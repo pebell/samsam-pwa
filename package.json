@@ -26,6 +26,7 @@
     "@politie/ngx-sherlock": "^2.0.0",
     "@politie/sherlock": "^3.1.0",
     "@politie/sherlock-rxjs": "^3.1.0",
+    "local-web-server": "^4.2.1",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"

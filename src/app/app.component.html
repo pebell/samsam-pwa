@@ -6,16 +6,19 @@
 
   <mat-sidenav-content fxLayout="column">
 
-    <div class="header" *ngIf="appservice.showHeader$ | value">
+    <div class="header" *ngIf="app.showHeader$ | value">
       <app-header-mobile fxHide fxShow.lt-sm>
       </app-header-mobile>
     </div>
-
+    <button *ngIf="app.promptEvent$ | value" (click)="app.installPwa()">
+      Install
+    </button>
+  
     <main class="container mat-app-background">
       <router-outlet></router-outlet>
     </main>
 
-    <app-footer-mobile *ngIf="appservice.showFooter$ | value" (sidenavToggle)="sidenav.toggle()"  fxHide fxShow.lt-sm >
+    <app-footer-mobile *ngIf="app.showFooter$ | value" (sidenavToggle)="sidenav.toggle()"  fxHide fxShow.lt-sm >
     </app-footer-mobile>
 
   </mat-sidenav-content>

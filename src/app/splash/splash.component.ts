@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AppService } from '../app.service';
+import { PwaService } from '../pwa.service';
 
 @Component({
   selector: 'app-splash',
@@ -8,10 +10,14 @@ import { Router } from '@angular/router';
 })
 export class SplashComponent implements OnInit {
 
-  constructor(private readonly router: Router) { }
+  constructor(public app: AppService, private readonly router: Router) { }
 
   ngOnInit(): void {
-    setTimeout(() => { this.router.navigate(['/home']) },2000);
-  }
+    // console.log('has prompt event: '+!!this.Pwa.promptEvent);
+    setTimeout(() => { 
 
+        this.router.navigate(['/home']) 
+    },3000);
+
+  }
 }

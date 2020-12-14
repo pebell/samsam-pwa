@@ -18,6 +18,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { NgxSherlockModule } from "@politie/ngx-sherlock";
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { BedragenComponent } from './bedragen/bedragen.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { environment } from '../environments/environment';
     SplashComponent,
     FooterMobileComponent,
     HeaderMobileComponent,
-    DashboardComponent
+    DashboardComponent,
+    BedragenComponent
   ],
   imports: [
     BrowserModule,

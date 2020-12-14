@@ -17,4 +17,8 @@ export class FooterMobileComponent implements OnInit {
     this.sidenavToggle.emit();
   }
 
+  ngsw() {
+    console.log('hier');
+    window.location.href='/ngsw/state';
+  }
 }

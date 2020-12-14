@@ -1,6 +1,6 @@
 <footer class="footer">
-    <mat-toolbar class="footer" >
-            <div fxFlex fxLayout="row" fxLayoutAlign="space-between center">
+    <mat-toolbar>
+            <div fxFlex fxLayout="row" fxLayoutAlign="space-between center" class='toolbar-content'>
         
               <button mat-button routerLink="/home" routerLinkActive="active-menu-item">
                 <div class="toolbar-icon">
@@ -11,12 +11,21 @@
                 </div>
               </button>
         
-              <button mat-button routerLink="/forums" routerLinkActive="active-menu-item">
+              <button mat-button routerLink="/bedragen" routerLinkActive="active-menu-item">
                 <div class="toolbar-icon">
                   <mat-icon>euro_symbol</mat-icon>
                 </div>
                 <div class="toolbar-icon-text">
                   <span>Bedragen</span>
+                </div>
+              </button>
+      
+              <button mat-button (click)="ngsw()" routerLinkActive="active-menu-item">
+                <div class="toolbar-icon">
+                  <mat-icon>bug</mat-icon>
+                </div>
+                <div class="toolbar-icon-text">
+                  <span>Debug</span>
                 </div>
               </button>
       

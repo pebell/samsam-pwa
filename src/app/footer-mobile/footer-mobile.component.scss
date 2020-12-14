@@ -3,9 +3,11 @@
 footer {
     position: fixed;
     bottom: 0px;
-    overflow: hide;
+    overflow: hidden;
     width: 100%;
-    height: 56px; 
+    height: 70px; 
+    background-color: black;
+    touch-action: none;
   }
 
   .toolbar-icon {
@@ -24,4 +26,13 @@ footer {
   
   .active-menu-item {
      color: mat-color($samsam-primary, lighter);
+  }
+
+  mat-toolbar {
+    background-color: black;
+    height: 70px;
+  }
+
+  .toolbar-content {
+    margin-bottom: 20px;
   }
