@@ -5,3 +5,10 @@
     /* bring your own prefixes */
     transform: translate(-50%, -50%);
   }
+
+
+mat-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

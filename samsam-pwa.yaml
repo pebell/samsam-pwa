@@ -1,0 +1,12 @@
+service: samsam-pwa
+runtime: python27
+api_version: 1
+threadsafe: true
+handlers:
+- url: /
+  static_files: dist/samsam-pwa/index.html
+  upload: dist/samsam-pwa/index.html
+  secure: always
+- url: /
+  static_dir: dist/samsam-pwa
+  secure: always

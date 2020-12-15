@@ -10,7 +10,7 @@
       <app-header-mobile fxHide fxShow.lt-sm>
       </app-header-mobile>
     </div>
-    <button *ngIf="app.promptEvent$ | value" (click)="app.installPwa()">
+    <button *ngIf="pwa.promptEvent$ | value" (click)="pwa.installPwa()">
       Install
     </button>
   
@@ -18,7 +18,7 @@
       <router-outlet></router-outlet>
     </main>
 
-    <app-footer-mobile *ngIf="app.showFooter$ | value" (sidenavToggle)="sidenav.toggle()"  fxHide fxShow.lt-sm >
+    <app-footer-mobile *ngIf="app.showFooter$ | value" (sidenavToggle)="sidenav.toggle()"> <!--  fxHide fxShow.lt-sm -->
     </app-footer-mobile>
 
   </mat-sidenav-content>

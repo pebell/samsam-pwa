@@ -2,6 +2,7 @@
   "compileOnSave": false,
   "compilerOptions": {
     "baseUrl": "./",
+    "esModuleInterop": true,
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
     "declaration": false,
@@ -10,6 +11,7 @@
     "module": "es2020",
     "moduleResolution": "node",
     "importHelpers": true,
+    "strict": true,
     "target": "es2015",
     "typeRoots": [
       "node_modules/@types"
