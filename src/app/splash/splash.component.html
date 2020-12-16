@@ -1,11 +1,16 @@
-<mat-card>
+<mat-card *ngIf="loggedIn$ | value">
     <mat-card-title>
-        Welkom terug, Peter!
+        Welkom terug, {{ user$ | value }}!
     </mat-card-title>
     <mat-card-actions>
         <button mat-mat-raised-button routerLink="/home" skipLocationChange>Inloggen</button>
     </mat-card-actions>
     
+</mat-card>
+<mat-card *ngIf="!(loggedIn$ | value)">
+    <mat-card-title>
+        NOT LOGGED IN
+    </mat-card-title>
 </mat-card>
 <img src="/assets/images/splash.png" class="centered"/>
 

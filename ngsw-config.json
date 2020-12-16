@@ -12,7 +12,8 @@
           "/manifest.webmanifest",
           "/*.css",
           "/assets/**",
-          "/*.js"
+          "/*.js",
+          "/*.json"
         ]
       }
     }, {
@@ -26,5 +27,18 @@
         ]
       }
     }
+  ],
+  "dataGroups": [
+      {
+          "name": "authorization",
+          "urls": ["/api/leden/*"],
+          "cacheConfig": {
+              "maxSize": 10,
+              "maxAge": "10d",
+              "timeout": "0s",
+              "strategy": "freshness"
+          }
+
+      }
   ]
 }
