@@ -55,7 +55,7 @@ export class PwaService implements CanActivate  {
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     const now = new Date();
-    if (!this.lastUpdateCheck || now.getTime() - this.lastUpdateCheck.getTime() > ms( '1 minute') ) {
+    if (environment.production && (!this.lastUpdateCheck || now.getTime() - this.lastUpdateCheck.getTime() > ms( '1 minute') )) {
       console.log('Checking for update');
       this.lastUpdateCheck = now;
       this.swUpdate.checkForUpdate();
