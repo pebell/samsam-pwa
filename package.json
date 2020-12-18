@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng build --prod && ./node_modules/.bin/ws -d dist/samsam-pwa --spa index.html --https -z -v --port 443",
-    "build": "ng build",
+    "start": "ng build --configuration local && ./node_modules/.bin/ws -d dist/samsam-pwa --spa index.html --rewrite '/api/(.*) -> http://localhost:3333/api/$1' --https -z -v --port 443",
+    "build": "ng build --configuration local",
     "build:prod": "ng build --prod",
     "deploy": "ng build --prod && gcloud app deploy samsam-pwa.yaml --quiet",
     "test": "ng test",
@@ -28,6 +28,8 @@
     "@politie/ngx-sherlock": "^2.0.0",
     "@politie/sherlock": "^3.1.0",
     "@politie/sherlock-rxjs": "^3.1.0",
+    "@types/crypto-js": "^4.0.1",
+    "crypto-js": "^4.0.0",
     "local-web-server": "^4.2.1",
     "ms": "^2.1.3",
     "rxjs": "~6.6.3",
@@ -55,5 +57,8 @@
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
     "typescript": "~4.0.5"
+  },
+  "browser": {
+      "crypto": false
   }
 }

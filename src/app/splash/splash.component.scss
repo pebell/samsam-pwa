@@ -11,4 +11,25 @@ mat-card {
   display: flex;
   flex-direction: column;
   align-items: center;
+  &.login {
+      z-index: 1;
+      mat-card-actions, mat-card-content {
+          margin-bottom: 0px;
+      }
+  }
+}
+
+form {
+    width: 100%;
+    mat-card-content {
+        display: flex;
+        flex-direction: column;
+    
+    }
+}
+
+.foutmelding {
+    color: #ff4081;
+    font-weight: 600;
+    font-size: 18px;
 }

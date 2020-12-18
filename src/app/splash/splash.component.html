@@ -1,16 +1,32 @@
 <mat-card *ngIf="loggedIn$ | value">
     <mat-card-title>
-        Welkom terug, {{ user$ | value }}!
+        Welkom terug, {{ userName$ | value }}!
     </mat-card-title>
     <mat-card-actions>
-        <button mat-mat-raised-button routerLink="/home" skipLocationChange>Inloggen</button>
+        <button *ngIf="portalUser$ | value" mat-mat-raised-button routerLink="/home" skipLocationChange>Naar dashboard</button>
     </mat-card-actions>
     
 </mat-card>
-<mat-card *ngIf="!(loggedIn$ | value)">
-    <mat-card-title>
-        NOT LOGGED IN
-    </mat-card-title>
+<mat-card *ngIf="message$ | value as message" class="foutmelding">
+        {{ message}}
+</mat-card>
+<mat-card *ngIf="needsLogin$ | value" class="login">
+    <form (submit)="login()" #form="ngForm">
+    <mat-card-content>
+        <mat-form-field color="accent">
+            <mat-label>Gebruikersnaam</mat-label>
+                <input matInput name="username" [(ngModel)]="credentials.username" required />
+            </mat-form-field>
+            <mat-form-field color="accent">
+                <mat-label>Wachtwoord</mat-label>
+                <input matInput name="password" [(ngModel)]="credentials.password" required />
+            </mat-form-field>
+        </mat-card-content>
+        <mat-card-actions align="end">
+            <button color="warn" mat-raised-button [disabled]="!form.valid">Ok</button>
+        </mat-card-actions>
+    </form>
+
 </mat-card>
 <img src="/assets/images/splash.png" class="centered"/>
 

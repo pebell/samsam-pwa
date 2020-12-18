@@ -9,6 +9,7 @@ import { MatMenuModule} from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { SplashComponent } from './splash/splash.component';
 import { FooterMobileComponent } from './footer-mobile/footer-mobile.component';
@@ -21,6 +22,7 @@ import { environment } from '../environments/environment';
 import { BedragenComponent } from './bedragen/bedragen.component';
 import { ComponentsModule } from './components/components.module';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -35,10 +37,12 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     MatToolbarModule,
     FlexLayoutModule,
+    FormsModule,
     MatMenuModule,
     MatIconModule,
     MatCardModule,
     MatButtonModule,
+    MatInputModule,
     MatSidenavModule,
     NgxSherlockModule,
     AppRoutingModule,

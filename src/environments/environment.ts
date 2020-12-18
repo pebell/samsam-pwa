@@ -7,7 +7,7 @@ import { Environment } from './environment.model';
 export const environment: Environment = {
   production: false,
   gatewayURL: 'http://localhost:8443',
-  backendURL: 'http://localhost:3333/',
+  backendURL: 'http://localhost:3333/api',
 };
 
 /*

@@ -1,0 +1,7 @@
+dispatch: 
+
+ - url: "*/api/*"
+   service: samsam-backend
+
+
+    
