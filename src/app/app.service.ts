@@ -11,11 +11,13 @@ export class AppService {
   showFooter$ = atom(false);
 
   showHeader(show: boolean) {
-    setTimeout(() => this.showHeader$.set(show), 1);
+    // setTimeout(() => this.showHeader$.set(show), 1);
+    this.showHeader$.set(show);
   }
 
   showFooter(show: boolean) {
-    setTimeout(() => this.showFooter$.set(show), 1);
+    // setTimeout(() => this.showFooter$.set(show), 1);
+    this.showFooter$.set(show);
   }
 
 }

@@ -6,7 +6,7 @@
 
   <mat-sidenav-content fxLayout="column">
 
-    <div class="header" *ngIf="app.showHeader$ | value">
+    <div class="header">
       <app-header-mobile fxHide fxShow.lt-sm>
       </app-header-mobile>
     </div>
@@ -18,7 +18,7 @@
       <router-outlet></router-outlet>
     </main>
 
-    <app-footer-mobile *ngIf="app.showFooter$ | value" (sidenavToggle)="sidenav.toggle()"> <!--  fxHide fxShow.lt-sm -->
+    <app-footer-mobile (sidenavToggle)="sidenav.toggle()"> <!--  fxHide fxShow.lt-sm -->
     </app-footer-mobile>
 
   </mat-sidenav-content>

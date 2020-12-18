@@ -13,6 +13,7 @@ mat-card {
   align-items: center;
   &.login {
       z-index: 1;
+      margin: 10px;
       mat-card-actions, mat-card-content {
           margin-bottom: 0px;
       }

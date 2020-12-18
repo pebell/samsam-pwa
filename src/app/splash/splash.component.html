@@ -1,6 +1,6 @@
 <mat-card *ngIf="loggedIn$ | value">
     <mat-card-title>
-        Welkom terug, {{ userName$ | value }}!
+        Welkom{{ usedStoredCredentials ? ' terug' : '' }}, {{ userName$ | value }}!
     </mat-card-title>
     <mat-card-actions>
         <button *ngIf="portalUser$ | value" mat-mat-raised-button routerLink="/home" skipLocationChange>Naar dashboard</button>

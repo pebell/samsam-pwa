@@ -53,6 +53,10 @@ export class PwaService implements CanActivate  {
     (this.promptEvent$.get() as any).prompt();
   }
 
+  /**
+   *  By implementing the CanActivate interface and registrering this class on the major routes of this app,
+   *  we can trigger the update check periodically.
+   */
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     const now = new Date();
     if (environment.production && (!this.lastUpdateCheck || now.getTime() - this.lastUpdateCheck.getTime() > ms( '1 minute') )) {

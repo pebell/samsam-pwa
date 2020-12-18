@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { AppService } from '../app.service';
 
 @Component({
   selector: 'app-footer-mobile',
@@ -8,7 +9,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 export class FooterMobileComponent implements OnInit {
   @Output() public sidenavToggle = new EventEmitter();
 
-  constructor() { }
+  constructor(public readonly app: AppService) { }
 
   ngOnInit(): void {
   }
@@ -19,6 +20,6 @@ export class FooterMobileComponent implements OnInit {
 
   ngsw() {
     console.log('hier');
-    window.location.href='/ngsw/state';
+    window.location.href = '/ngsw/state';
   }
 }

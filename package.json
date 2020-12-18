@@ -4,6 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng build --configuration local && ./node_modules/.bin/ws -d dist/samsam-pwa --spa index.html --rewrite '/api/(.*) -> http://localhost:3333/api/$1' --https -z -v --port 443",
+    "start:dev": "ng serve",
     "build": "ng build --configuration local",
     "build:prod": "ng build --prod",
     "deploy": "ng build --prod && gcloud app deploy samsam-pwa.yaml --quiet",

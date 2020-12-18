@@ -17,12 +17,11 @@ export class SplashComponent implements OnInit {
 
     constructor(
         public readonly app: AppService,
-        private readonly cs: ComponentsService,
-        private readonly router: Router,
         private readonly auth: AuthService,
         private readonly backend: BackendService,
     ) { }
 
+    usedStoredCredentials = false;
     userName$ = this.auth.gatewayUser$.pluck('firstName');
     portalUser$ = this.backend.portalUser$;
     loggedIn$ = this.auth.loggedIn$;
@@ -36,10 +35,17 @@ export class SplashComponent implements OnInit {
             this.auth.getStoredCredentials().then(storedCreds => {
                 if (!this.auth.loggedIn() && storedCreds) {
                     // We are not logged in, but we have locally stored credentials from last time
+                    this.usedStoredCredentials = true;
                     this.auth.login(storedCreds).then(r => this.handleLoginResult(r));
                 }
             });
         });
+
+        if (window.matchMedia('(display-mode: standalone)').matches) {
+            console.log('display-mode is standalone');
+        } else {
+            console.log('we seem to be running in a plain browser, yuck!');
+        }
     }
 
     /**
@@ -55,10 +61,26 @@ export class SplashComponent implements OnInit {
         if (r) {
             this.message$.set(unresolved);
             return;
+        } else {
+            const m = r === false
+                ? 'Ongeldige gebruikersnaam en/of wachtwoord'
+                : 'Inloggen is momenteel niet mogelijk. Probeer het later opnieuw.';
+            this.message$.set(m);
+            this.usedStoredCredentials = false;
         }
-        const m = r === false
-            ? 'Ongeldige gebruikersnaam en/of wachtwoord'
-            : 'Inloggen is momenteel niet mogelijk. Probeer het later opnieuw.';
-        this.message$.set(m);
     }}
 
+/*
+// Detects if device is on iOS
+const isIos = () => {
+  const userAgent = window.navigator.userAgent.toLowerCase();
+  return /iphone|ipad|ipod/.test( userAgent );
+}
+// Detects if device is in standalone mode
+const isInStandaloneMode = () => ('standalone' in window.navigator) && (window.navigator.standalone);
+
+// Checks if should display install popup notification:
+if (isIos() && !isInStandaloneMode()) {
+  // offer app installation here
+}
+*/
