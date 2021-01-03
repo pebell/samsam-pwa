@@ -1,0 +1,3 @@
+<div [style.height.px]="pullheight$ | async" [style.opacity.%]="opacity$ | async"  >  
+    <img src="/assets/images/splash.png" height="70px" class="centered" [class.refreshing]="backend.refreshing$ | value"/>
+</div>

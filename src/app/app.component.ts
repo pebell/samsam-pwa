@@ -10,8 +10,6 @@ import { PwaService } from './pwa.service';
 export class AppComponent {
   title = 'samsam-pwa';
 
-  constructor(public readonly app: AppService, public readonly pwa: PwaService) {
-
-  }
+  constructor(public readonly app: AppService, public readonly pwa: PwaService) { }
 
 }

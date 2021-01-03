@@ -1,11 +1,11 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { atom, ErrorWrapper, unresolved } from '@politie/sherlock';
+import { atom } from '@politie/sherlock';
 import { fromObservable } from '@politie/sherlock-rxjs';
 import { environment } from 'src/environments/environment';
 import { AuthService, GatewayUser } from '../auth/auth.service';
-import { pluck } from 'rxjs/operators';
 import { ErrorService } from './error.service';
+import { PortalUser } from './lid';
 
 @Injectable({
   providedIn: 'root'
@@ -24,7 +24,9 @@ export class BackendService {
                             // make backendToken$ unresolved when an error occurs
                             .mapState(s => this.err.unresolvedOnError(s));
 
-    public portalUser$ = atom.unresolved();
+    public portalUser$ = atom.unresolved<PortalUser>();
+
+    public refreshing$ = atom(false);
 
     private obtainBackendToken({ principal, gatewaySecret }: GatewayUser) {
         console.log(`Obtaining session token from SamSam Nest backend for ${principal}`);
@@ -34,13 +36,17 @@ export class BackendService {
         );
     }
 
-    private refreshPortalUser() {
+    public refreshPortalUser() {
         console.log(`Refreshing portal user`);
+        this.refreshing$.set(true);
         const u = fromObservable(
-            this.http.get<{token: string}>(`${environment.backendURL}/leden/lidportal`,
+            this.http.get<PortalUser>(`${environment.backendURL}/leden/lidportal`,
             { headers: this.getBackendHeaders() })
         );
-        u.react(p => this.portalUser$.set(p));
+        u.react(p => {
+            this.portalUser$.set(p);
+            setTimeout(() => this.refreshing$.set(false), 1000);
+        });
         return u;
     }
 
@@ -51,4 +57,6 @@ export class BackendService {
     }
 
 }
+
+
 

@@ -1,0 +1,19 @@
+.centered {
+    left: 50%;
+    position: fixed;
+    transform: translate(-50%);
+}
+
+.refreshing {
+    animation: rotation 1.5s infinite linear;
+}
+
+@keyframes rotation {
+    from {
+        transform:  translate(-50%) rotate(360deg);
+    }
+
+    to {
+        transform:  translate(-50%) rotate(0deg);
+    }
+}

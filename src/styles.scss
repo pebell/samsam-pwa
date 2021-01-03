@@ -32,3 +32,11 @@ $samsam-pwa-theme: map_merge($samsam-pwa-theme, (background: $background));
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+mat-card.mat-card {
+    margin-bottom: 10px;
+    border-radius: 10px;
+    mat-card-title {
+        font-size: 20px;
+    }
+}

@@ -1,4 +1,38 @@
+<app-pull-to-refresh></app-pull-to-refresh>
 <mat-card>
+    <mat-card-title>Status</mat-card-title>
+    <mat-card-content class="artwork">
+        <img src="/assets/images/alles_ok.png"/>
+    </mat-card-content>
+</mat-card>
+
+<mat-card class="graph">
+    <mat-card-title>Maandbedrag</mat-card-title>
+    <mat-card-content>
+    <div id="chart">
+    <apx-chart 
+    [series]="series$ | value"
+    [chart]="chartOptions.chart"
+    [labels]="chartOptions.labels"
+    [dataLabels]="chartOptions.dataLabels"
+    [responsive]="chartOptions.responsive"
+    [legend]="chartOptions.legend"
+    [theme]="chartOptions.theme"
+    [plotOptions]="chartOptions.plotOptions"
+    [stroke]="chartOptions.stroke"
+    [fill]="chartOptions.fill"
+    [colors]="chartOptions.colors"
+
+  ></apx-chart>
+</div>
+<!-- [colors]="['red','blue','green']"
+[fill]="{ colors: ['red','blue','green']}" -->
+        
+</mat-card-content>
+</mat-card>
+
+
+<mat-card  id="scrollcontent">
     <mat-card-title>Dashboard</mat-card-title>
 
     <code>{{ dataDump$ | value }} </code>
@@ -11,3 +45,4 @@ Eu mei quis esse movet, ea officiis definiebas quo. Nam in adolescens inciderint
 </p>
 -->
 </mat-card>
+
