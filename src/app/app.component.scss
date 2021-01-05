@@ -1,3 +1,7 @@
+.mat-drawer-container[fullscreen] {
+    position: static !important;
+}
+
 mat-sidenav-container, mat-sidenav-content, mat-sidenav {
     height: 100vh; // Component content fills entire verticle space
   }
@@ -13,9 +17,12 @@ mat-sidenav-container, mat-sidenav-content, mat-sidenav {
   // Component content area
   .container {
     height: 100vh; // Component content fills entire verticle space
+    width: 100vw;
     overflow: auto; // Keeps header from scrolling away
     padding: 2px; // Component conent padding around edges
     margin-bottom: 75px; // Matches height of footer so can see all content when scrolling to bottom
+    overscroll-behavior-y: none;
+    -webkit-overflow-scrolling: touch;
   }
 
   // app-footer-mobile {

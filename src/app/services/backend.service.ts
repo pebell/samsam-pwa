@@ -26,8 +26,6 @@ export class BackendService {
 
     public portalUser$ = atom.unresolved<PortalUser>();
 
-    public refreshing$ = atom(false);
-
     private obtainBackendToken({ principal, gatewaySecret }: GatewayUser) {
         console.log(`Obtaining session token from SamSam Nest backend for ${principal}`);
         return fromObservable(
@@ -38,15 +36,11 @@ export class BackendService {
 
     public refreshPortalUser() {
         console.log(`Refreshing portal user`);
-        this.refreshing$.set(true);
         const u = fromObservable(
             this.http.get<PortalUser>(`${environment.backendURL}/leden/lidportal`,
             { headers: this.getBackendHeaders() })
         );
-        u.react(p => {
-            this.portalUser$.set(p);
-            setTimeout(() => this.refreshing$.set(false), 1000);
-        });
+        u.react(p => this.portalUser$.set(p));
         return u;
     }
 

@@ -30,7 +30,11 @@ $samsam-pwa-theme: map_merge($samsam-pwa-theme, (background: $background));
 
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
+html, body { 
+    // height: 100%;
+    position: fixed;
+    overflow: hidden;
+}
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 mat-card.mat-card {
