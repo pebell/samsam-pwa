@@ -2,24 +2,23 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { AppService } from '../app.service';
 
 @Component({
-  selector: 'app-footer-mobile',
-  templateUrl: './footer-mobile.component.html',
-  styleUrls: ['./footer-mobile.component.scss']
+    selector: 'app-footer-mobile',
+    templateUrl: './footer-mobile.component.html',
+    styleUrls: ['./footer-mobile.component.scss'],
 })
 export class FooterMobileComponent implements OnInit {
-  @Output() public sidenavToggle = new EventEmitter();
+    @Output() public sidenavToggle = new EventEmitter();
 
-  constructor(public readonly app: AppService) { }
+    constructor(public readonly app: AppService) {}
 
-  ngOnInit(): void {
-  }
+    ngOnInit(): void {}
 
-  onToggleSidenav = () => {
-    this.sidenavToggle.emit();
-  }
+    onToggleSidenav = () => {
+        this.sidenavToggle.emit();
+    };
 
-  ngsw() {
-    console.log('hier');
-    window.location.href = '/ngsw/state';
-  }
+    ngsw() {
+        console.log('hier');
+        window.location.href = '/ngsw/state';
+    }
 }

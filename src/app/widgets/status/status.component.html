@@ -1,0 +1,7 @@
+<mat-card *ngIf="lid">
+    <mat-card-title>Status</mat-card-title>
+    <mat-card-content class="artwork">
+        <img *ngIf="allesOK" src="/assets/images/alles_ok.png"/>
+        <img *ngIf="!allesOK" src="/assets/images/niet_ok.png"/>
+    </mat-card-content>
+</mat-card>

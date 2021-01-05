@@ -6,7 +6,7 @@ export const SimpleIDB = {
         return new Promise<void>((resolve, reject) => {
             const request = indexedDB.open(dbNAME);
             request.onsuccess = _ => {
-                if (request.result.objectStoreNames.contains(dbSTORE)){
+                if (request.result.objectStoreNames.contains(dbSTORE)) {
                     resolve();
                 }
             };
@@ -79,5 +79,5 @@ export const SimpleIDB = {
                 reject(oRequest.error);
             };
         });
-    }
+    },
 };

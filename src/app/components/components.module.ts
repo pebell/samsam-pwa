@@ -8,7 +8,6 @@ import { NgxSherlockModule } from '@politie/ngx-sherlock';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 import { PullToRefreshComponent } from './pull-to-refresh/pull-to-refresh.component';
 
-
 @NgModule({
     declarations: [ConfirmDialogComponent, PullToRefreshComponent],
     exports: [PullToRefreshComponent],

@@ -18,7 +18,6 @@ export class ComponentsService {
         const result = await dialogRef.afterClosed().toPromise();
         return !!result;
     }
-
 }
 
 export interface ConfirmDialogData {

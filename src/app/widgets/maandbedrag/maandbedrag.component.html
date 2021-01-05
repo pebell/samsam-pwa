@@ -1,0 +1,22 @@
+<mat-card class="graph">
+    <mat-card-title>Maandbedrag</mat-card-title>
+    <mat-card-content>
+        <div id="chart">
+            <apx-chart 
+                [series]="series$ | value"
+                [chart]="chartOptions.chart"
+                [labels]="chartOptions.labels"
+                [dataLabels]="chartOptions.dataLabels"
+                [responsive]="chartOptions.responsive"
+                [legend]="chartOptions.legend"
+                [theme]="chartOptions.theme"
+                [plotOptions]="chartOptions.plotOptions"
+                [stroke]="chartOptions.stroke"
+                [fill]="chartOptions.fill"
+                [colors]="chartOptions.colors"
+            ></apx-chart>
+        </div>
+<!-- [colors]="['red','blue','green']"
+[fill]="{ colors: ['red','blue','green']}" -->
+    </mat-card-content>
+</mat-card>

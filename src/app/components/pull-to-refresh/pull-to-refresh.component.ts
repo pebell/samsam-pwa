@@ -1,21 +1,17 @@
-import { Component, ElementRef, ChangeDetectionStrategy, OnDestroy } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, OnDestroy } from '@angular/core';
+import { atom } from '@politie/sherlock';
+import { BehaviorSubject, concat, defer, from, fromEvent, merge, timer } from 'rxjs';
+import { distinctUntilChanged, filter, map, repeat, switchMap, take, takeUntil, tap } from 'rxjs/operators';
 import { AppService } from '../../app.service';
-
-import { BehaviorSubject, concat, defer, from, fromEvent, merge, Observable, Subject, Subscription } from 'rxjs';
-import { distinctUntilChanged, filter, map, publishReplay, repeat, startWith, switchMap, take, takeUntil, takeWhile, tap } from 'rxjs/operators';
 import { BackendService } from '../../services/backend.service';
-import { timer } from 'rxjs';
-import { atom, unresolved } from '@politie/sherlock';
-import { fromObservable } from '@politie/sherlock-rxjs';
 
 @Component({
-  selector: 'app-pull-to-refresh',
-  templateUrl: './pull-to-refresh.component.html',
-  styleUrls: ['./pull-to-refresh.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'app-pull-to-refresh',
+    templateUrl: './pull-to-refresh.component.html',
+    styleUrls: ['./pull-to-refresh.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PullToRefreshComponent implements OnDestroy {
-
     touchstart$ = fromEvent<TouchEvent>(document, 'touchstart').pipe(tap(e => console.log('touchstart')));
     touchend$ = fromEvent<TouchEvent>(document, 'touchend').pipe(tap(e => console.log('touchend')));
     touchmove$ = fromEvent<TouchEvent>(document, 'touchmove');
@@ -25,24 +21,29 @@ export class PullToRefreshComponent implements OnDestroy {
 
     mainContent = getMainContent();
 
-    constructor(public readonly app: AppService, private readonly element: ElementRef, public readonly backend: BackendService) {  }
+    constructor(public readonly app: AppService, private readonly element: ElementRef, public readonly backend: BackendService) {}
 
     drag$ = this.touchstart$.pipe(
-        map(e =>  this.mainContent.scrollTop + e.touches[0].pageY ),
+        map(e => this.mainContent.scrollTop + e.touches[0].pageY),
         switchMap(start => {
             this.pos$.set(0);
             this.running$.next(true); // needed to make sure stop$ doesn't fire straight away (see takeUntil)
             return concat(
                 this.touchmove$.pipe(
-                    map(move => move.touches[0].pageY + this.mainContent.scrollTop - start ),
+                    map(move => move.touches[0].pageY + this.mainContent.scrollTop - start),
                     map(y => getMovement(y)),
                     distinctUntilChanged(),
                     takeUntil(merge(this.touchend$, this.stop$)), // Stop als einde drag, of wanneer refresh klaar is
                 ),
                 // Als er een refresh draait, wacht totdat die eindigt
-                defer(() => this.isRefreshing()
-                    ? this.stop$.pipe(map(_ => this.pos$.get()) , take(1))
-                    : from([this.pos$.get()]) ),
+                defer(() =>
+                    this.isRefreshing()
+                        ? this.stop$.pipe(
+                              map(_ => this.pos$.get()),
+                              take(1),
+                          )
+                        : from([this.pos$.get()]),
+                ),
                 // Genereer events om terug omhoog te scrollen
                 defer(() => this.tweenObservable(0, 200)),
             );
@@ -51,7 +52,6 @@ export class PullToRefreshComponent implements OnDestroy {
         repeat(), // repeat omdat anders niet meer naar touch event wordt geluisterd.
     );
     stopDrag = this.drag$.subscribe(a => a);
-
 
     pos$ = atom(0);
     pullheight$ = this.pos$.map(y => Math.floor(0.8 * y));
@@ -62,10 +62,12 @@ export class PullToRefreshComponent implements OnDestroy {
     stopReload = this.doReload$.react(reload => {
         if (reload && !this.isRefreshing()) {
             this.changeRunningState(true);
-            this.backend.refreshPortalUser().react(u => setTimeout(() => {
-                console.log('ending it');
-                this.changeRunningState(false);
-            }, 500));
+            this.backend.refreshPortalUser().react(u =>
+                setTimeout(() => {
+                    console.log('ending it');
+                    this.changeRunningState(false);
+                }, 500),
+            );
         }
     });
 
@@ -94,10 +96,9 @@ export class PullToRefreshComponent implements OnDestroy {
 
         return timer(0, 10).pipe(
             map(x => start - step * (x + 1)),
-            take(emissions)
+            take(emissions),
         );
     }
-
 }
 
 function getMainContent() {

@@ -8,37 +8,34 @@ import { ErrorService } from './error.service';
 import { PortalUser } from './lid';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root',
 })
 export class BackendService {
-
-    constructor(private readonly http: HttpClient, private readonly auth: AuthService, private readonly err: ErrorService ) {
+    constructor(private readonly http: HttpClient, private readonly auth: AuthService, private readonly err: ErrorService) {
         // Whenever we get a new backend token, refresh the portal user
         this.backendToken$.react(_ => this.refreshPortalUser());
         this.portalUser$.react(u => console.log(u));
     }
 
     public backendToken$ = this.auth.gatewayUser$
-                            .flatMap(g => this.obtainBackendToken(g))
-                            .pluck('token')
-                            // make backendToken$ unresolved when an error occurs
-                            .mapState(s => this.err.unresolvedOnError(s));
+        .flatMap(g => this.obtainBackendToken(g))
+        .pluck('token')
+        // make backendToken$ unresolved when an error occurs
+        .mapState(s => this.err.unresolvedOnError(s));
 
     public portalUser$ = atom.unresolved<PortalUser>();
 
     private obtainBackendToken({ principal, gatewaySecret }: GatewayUser) {
         console.log(`Obtaining session token from SamSam Nest backend for ${principal}`);
         return fromObservable(
-            this.http.post<{token: string}>(`${environment.backendURL}/auth/create-token`,
-                { principal, gatewaySecret })
+            this.http.post<{ token: string }>(`${environment.backendURL}/auth/create-token`, { principal, gatewaySecret }),
         );
     }
 
     public refreshPortalUser() {
         console.log(`Refreshing portal user`);
         const u = fromObservable(
-            this.http.get<PortalUser>(`${environment.backendURL}/leden/lidportal`,
-            { headers: this.getBackendHeaders() })
+            this.http.get<PortalUser>(`${environment.backendURL}/leden/lidportal`, { headers: this.getBackendHeaders() }),
         );
         u.react(p => this.portalUser$.set(p));
         return u;
@@ -46,11 +43,7 @@ export class BackendService {
 
     getBackendHeaders() {
         return this.backendToken$.resolved
-        ? new HttpHeaders().set('authorization', `bearer ${this.backendToken$.get()}`)
-        : new HttpHeaders();
+            ? new HttpHeaders().set('authorization', `bearer ${this.backendToken$.get()}`)
+            : new HttpHeaders();
     }
-
 }
-
-
-

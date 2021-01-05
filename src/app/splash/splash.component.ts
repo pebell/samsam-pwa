@@ -9,17 +9,12 @@ import { BackendService } from '../services/backend.service';
 import { environment } from 'src/environments/environment';
 import { SimpleIDB } from '../auth/persistence';
 @Component({
-  selector: 'app-splash',
-  templateUrl: './splash.component.html',
-  styleUrls: ['./splash.component.scss']
+    selector: 'app-splash',
+    templateUrl: './splash.component.html',
+    styleUrls: ['./splash.component.scss'],
 })
 export class SplashComponent implements OnInit {
-
-    constructor(
-        public readonly app: AppService,
-        private readonly auth: AuthService,
-        private readonly backend: BackendService,
-    ) { }
+    constructor(public readonly app: AppService, private readonly auth: AuthService, private readonly backend: BackendService) {}
 
     usedStoredCredentials = false;
     userName$ = this.auth.gatewayUser$.pluck('firstName');
@@ -28,10 +23,10 @@ export class SplashComponent implements OnInit {
     needsLogin$ = this.auth.invalidCredentials$;
     message$ = atom.unresolved<string>();
 
-    credentials: Credentials = { username: '', password: ''};
+    credentials: Credentials = { username: '', password: '' };
 
     ngOnInit(): void {
-        SimpleIDB.initialize().then( _ => {
+        SimpleIDB.initialize().then(_ => {
             this.auth.getStoredCredentials().then(storedCreds => {
                 if (!this.auth.loggedIn() && storedCreds) {
                     // We are not logged in, but we have locally stored credentials from last time
@@ -57,18 +52,20 @@ export class SplashComponent implements OnInit {
         }
     }
 
-    handleLoginResult(r: boolean | undefined){
+    handleLoginResult(r: boolean | undefined) {
         if (r) {
             this.message$.set(unresolved);
             return;
         } else {
-            const m = r === false
-                ? 'Ongeldige gebruikersnaam en/of wachtwoord'
-                : 'Inloggen is momenteel niet mogelijk. Probeer het later opnieuw.';
+            const m =
+                r === false
+                    ? 'Ongeldige gebruikersnaam en/of wachtwoord'
+                    : 'Inloggen is momenteel niet mogelijk. Probeer het later opnieuw.';
             this.message$.set(m);
             this.usedStoredCredentials = false;
         }
-    }}
+    }
+}
 
 /*
 // Detects if device is on iOS

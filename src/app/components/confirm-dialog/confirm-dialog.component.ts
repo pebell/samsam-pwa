@@ -3,7 +3,7 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ConfirmDialogData } from '../components.service';
 
 @Component({
-    selector: 'match-confirm-dialog',
+    selector: 'app-confirm-dialog',
     templateUrl: './confirm-dialog.component.html',
     styleUrls: ['./confirm-dialog.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
