@@ -1,0 +1,82 @@
+.barcontainer {
+    height: 85px;
+    margin-top: -15px;
+}
+
+.mat-progress-bar {
+    height: 15px;
+}
+
+.bi {
+    width:min-content;
+    white-space: nowrap;
+}
+
+.boven {
+    width:min-content;
+    white-space: nowrap;
+    position: relative;
+    margin-left: -40px;
+    font-weight: bold;
+    top: 20px;
+}
+
+.bovenlabel {
+    color: #aaa;
+    width:min-content;
+    white-space: nowrap;
+}
+
+.onder {
+    width:min-content;
+    white-space: nowrap;
+    position: relative;
+    margin-left: -40px;
+    font-weight: bold;
+    top: -20px;
+}
+
+.onderlabel {
+    color: #aaa;
+    width:min-content;
+    white-space: nowrap;
+}
+
+.green {
+    ::ng-deep .mat-progress-bar-fill::after {
+        background-color: #7AC999;
+    }
+    ::ng-deep .mat-progress-bar-buffer {
+        background: #C6F4CD;
+    }
+    ::ng-deep .mat-progress-bar-background {
+        background: green;
+        fill: #333;
+    }
+}
+
+.blue {
+    ::ng-deep .mat-progress-bar-fill::after {
+        background-color: #6675B2;
+    }
+    ::ng-deep .mat-progress-bar-buffer {
+        background: #C1E1F4;
+    }
+    ::ng-deep .mat-progress-bar-background {
+        background: #55C;
+        fill: #333;
+    }
+}
+
+.red {
+    ::ng-deep .mat-progress-bar-fill::after {
+        background-color: #c71922;
+    }
+    ::ng-deep .mat-progress-bar-buffer {
+        background: #f4c1c4;
+    }
+    ::ng-deep .mat-progress-bar-background {
+        background: red;
+        fill: #333;
+    }
+}

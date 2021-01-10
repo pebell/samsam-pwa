@@ -1,0 +1,49 @@
+<mat-card *ngIf="lid$ | value as lid">
+    <mat-card-title>Schenkbuffer</mat-card-title>
+    <mat-card-content class="artwork">
+        <table width="95%">
+            <tr *ngIf="!isOverschot(lid)">
+                <td class="bar" colspan="2">
+                    <app-buffer-bar id="aap" [lid]="lid"
+                        shortColor="red"
+                        normalColor="green"
+                        bovenLabel="Banksaldo*"
+                        [onderLabel]="'Vereiste schenkbuffer:'"  
+                        [bovenValue]="lid.saldoTotalen.saldo"
+                        [onderValue]="lid.saldoTotalen.schenkbuffer_calc">
+                    </app-buffer-bar>
+                </td>
+            </tr>
+            <tr *ngIf="isOverschot(lid)">
+                <td class="bar">
+                  <app-buffer-bar id="mies"  [lid]="lid"
+                      shortColor="green"
+                      shortStyle="static"
+                      normalColor="green"
+                      normalStyle="animated"
+                      bovenLabel="Banksaldo*"
+                      [onderLabel]="'Maximale schenkbuffer:'"  
+                      [bovenValue]="lid.saldoTotalen.saldo"
+                      [onderValue]="maxBuffer(lid)">
+                  </app-buffer-bar>
+                </td>
+              </tr>
+              <tr>
+                  <td class="bar" colspan="2">
+                    <app-buffer-bar id="noot"  [lid]="lid"
+                        shortColor="blue"
+                        shortStyle="static"
+                        normalColor="blue"
+                        normalStyle="animated"
+                        bovenLabel="Huidige schenkbuffer:"
+                        [onderLabel]="'Maximale schenkbuffer:'"  
+                        [bovenValue]="lid.saldoTotalen.schenkbuffer"
+                        [onderValue]="maxBuffer(lid)">
+                    </app-buffer-bar>
+                </td>
+            </tr>
+
+        </table>
+        <div class="toelichting"> * laatste synchronisatie: <b>03-01-2021</b></div>
+    </mat-card-content>
+</mat-card>

@@ -1,0 +1,12 @@
+<div *ngIf="lid" id="{{ id }}" class="barcontainer">
+  <div *ngIf="uiDone" class="boven" [ngStyle]="{ left: bovenPosition }">€ {{ bovenBedrag}}</div>
+  <div class="bovenlabel" #bl>{{ bovenLabel }}</div>
+  <mat-progress-bar
+    [class]="barColor"
+    [mode]="barMode"
+    [bufferValue]="0"
+    [value]="barValue" id="bar" #bar>
+  </mat-progress-bar>
+  <div class="onderlabel" #ol>{{ onderLabel }}</div>
+  <div *ngIf="uiDone" class="onder" [ngStyle]="{ left: onderPosition }">€ {{ onderBedrag}}</div>
+</div>

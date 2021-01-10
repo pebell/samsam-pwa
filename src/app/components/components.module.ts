@@ -7,10 +7,11 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { NgxSherlockModule } from '@politie/ngx-sherlock';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 import { PullToRefreshComponent } from './pull-to-refresh/pull-to-refresh.component';
+import { BufferBarComponent } from './buffer-bar/buffer-bar.component';
 
 @NgModule({
-    declarations: [ConfirmDialogComponent, PullToRefreshComponent],
-    exports: [PullToRefreshComponent],
-    imports: [CommonModule, NgxSherlockModule, MatIconModule, MatProgressBarModule, MatDialogModule, MatButtonModule],
+    declarations: [ConfirmDialogComponent, PullToRefreshComponent, BufferBarComponent],
+    exports: [PullToRefreshComponent, BufferBarComponent],
+    imports: [CommonModule, NgxSherlockModule, MatIconModule, MatProgressBarModule, MatDialogModule, MatButtonModule, MatProgressBarModule],
 })
 export class ComponentsModule {}
