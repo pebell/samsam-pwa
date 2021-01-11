@@ -1,12 +1,20 @@
 export function toCurrency(amount: number) {
-    return formatCurrency(amount, '€ ', true, true, true);
+    return formatCurrency(amount, '€ ', true, true, true, true);
 }
 
-export function formatCurrency(amount: number, symbol: string, groupDigits: boolean, prefixed: boolean, exchangeCommas: boolean) {
+export function formatCurrency(
+    amount: number,
+    symbol: string,
+    roundToWhole: boolean,
+    groupDigits: boolean,
+    prefixed: boolean,
+    exchangeCommas: boolean,
+) {
     if (!amount || isNaN(amount)) {
-        return '€ 0.00';
+        return roundToWhole ? '€ 0' : '€ 0.00';
     }
-    let result = amount.toFixed(2);
+    const value = roundToWhole ? Math.round(amount) : amount;
+    let result = roundToWhole ? value.toFixed(0) : value.toFixed(2);
     if (groupDigits) {
         result = result.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,');
     }
@@ -18,7 +26,9 @@ export function formatCurrency(amount: number, symbol: string, groupDigits: bool
     if (exchangeCommas) {
         const decimalIndex = result.lastIndexOf('.');
         result = result.replace(',', '.');
-        result = result.substring(0, decimalIndex) + ',' + result.substring(decimalIndex + 1);
+        if (!roundToWhole) {
+            result = result.substring(0, decimalIndex) + ',' + result.substring(decimalIndex + 1);
+        }
     }
     return result;
 }

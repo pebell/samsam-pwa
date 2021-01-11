@@ -1,5 +1,6 @@
 import { Component, Input, ElementRef, ViewChild, AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { MatProgressBar } from '@angular/material/progress-bar';
+import { toCurrency } from 'src/app/services/utils';
 import { PortalUser } from '../../services/lid';
 
 @Component({
@@ -34,6 +35,8 @@ export class BufferBarComponent implements AfterViewInit {
         this.cdRef.detectChanges();
     }
 
+    toCur = toCurrency;
+
     style2Mode(style: string) {
         return style === 'static' ? 'determinate' : 'buffer';
     }
@@ -62,7 +65,7 @@ export class BufferBarComponent implements AfterViewInit {
     }
 
     get bovenPosition() {
-        const labelWidth = this.blElement.nativeElement.clientWidth + 50;
+        const labelWidth = this.blElement.nativeElement.clientWidth + 40;
         if (this.onderValue === 0 && this.bovenValue === 0) {
             return labelWidth + 'px';
         }
@@ -70,7 +73,7 @@ export class BufferBarComponent implements AfterViewInit {
     }
 
     get onderPosition() {
-        const labelWidth = this.olElement.nativeElement.clientWidth + 50;
+        const labelWidth = this.olElement.nativeElement.clientWidth + 40;
         if (this.onderValue === 0 && this.bovenValue === 0) {
             return labelWidth + 'px';
         }

@@ -1,7 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';
 import { atom } from '@politie/sherlock';
 import { PortalUser } from 'src/app/services/lid';
-import { toCurrency } from 'src/app/services/utils';
 
 @Component({
     selector: 'app-buffer',
@@ -16,8 +15,6 @@ export class BufferComponent implements OnInit {
     readonly lid$ = atom.unresolved<PortalUser>();
 
     // @Input() lid!: PortalUser;
-
-    toCur = toCurrency;
 
     constructor() {}
 
