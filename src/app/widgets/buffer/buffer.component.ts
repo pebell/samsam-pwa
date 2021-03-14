@@ -1,5 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';
 import { atom } from '@politie/sherlock';
+import moment from 'moment-mini';
 import { PortalUser } from 'src/app/services/lid';
 
 @Component({
@@ -29,5 +30,13 @@ export class BufferComponent implements OnInit {
 
     isOverschot(lid: PortalUser) {
         return lid.saldoTotalen.saldo >= this.maxBuffer(lid) + 10;
+    }
+
+    lastsync(lid: PortalUser) {
+        if (lid.saldoTotalen.saldo_lastsync) {
+            const lastsync = moment(new Date(lid.saldoTotalen.saldo_lastsync));
+            return lastsync.format('DD-MM-YYYY HH:mm.ss');
+        }
+        return 'nvt';
     }
 }

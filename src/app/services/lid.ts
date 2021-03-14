@@ -44,6 +44,7 @@ export interface PortalUser {
 export interface SaldoTotalen {
     id: number;
     saldo: number;
+    saldo_lastsync: string;
     saldo_storneerbaar: number;
     schenkbuffer: number;
     schenkbuffer_storneerbaar: number;
