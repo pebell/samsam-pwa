@@ -8,10 +8,11 @@ import { NgxSherlockModule } from '@politie/ngx-sherlock';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 import { PullToRefreshComponent } from './pull-to-refresh/pull-to-refresh.component';
 import { BufferBarComponent } from './buffer-bar/buffer-bar.component';
+import { SafePipe } from './safe.pipe';
 
 @NgModule({
-    declarations: [ConfirmDialogComponent, PullToRefreshComponent, BufferBarComponent],
-    exports: [PullToRefreshComponent, BufferBarComponent],
+    declarations: [ConfirmDialogComponent, PullToRefreshComponent, BufferBarComponent, SafePipe],
+    exports: [PullToRefreshComponent, BufferBarComponent, SafePipe],
     imports: [CommonModule, NgxSherlockModule, MatIconModule, MatProgressBarModule, MatDialogModule, MatButtonModule, MatProgressBarModule],
 })
 export class ComponentsModule {}

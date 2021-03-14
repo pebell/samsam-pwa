@@ -20,14 +20,22 @@
                 </div>
               </button>
       
-              <button mat-button (click)="ngsw()" routerLinkActive="active-menu-item">
+              <button mat-button routerLink="/debug" skipLocationChange routerLinkActive="active-menu-item">
+                <div class="toolbar-icon">
+                  <mat-icon>bug_report</mat-icon>
+                </div>
+                <div class="toolbar-icon-text">
+                  <span>Debug</span>
+                </div>
+              </button>
+              <!-- <button mat-button (click)="ngsw()" routerLinkActive="active-menu-item">
                 <div class="toolbar-icon">
                   <mat-icon>bug</mat-icon>
                 </div>
                 <div class="toolbar-icon-text">
                   <span>Debug</span>
                 </div>
-              </button>
+              </button> -->
       
               <button mat-button (click)="onToggleSidenav()">
                 <div class="toolbar-icon">

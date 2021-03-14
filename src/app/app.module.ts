@@ -24,9 +24,18 @@ import { ComponentsModule } from './components/components.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { WidgetsModule } from './widgets/widgets.module';
+import { DebugComponent } from './debug/debug.component';
 
 @NgModule({
-    declarations: [AppComponent, SplashComponent, FooterMobileComponent, HeaderMobileComponent, DashboardComponent, BedragenComponent],
+    declarations: [
+        AppComponent,
+        SplashComponent,
+        FooterMobileComponent,
+        HeaderMobileComponent,
+        DashboardComponent,
+        BedragenComponent,
+        DebugComponent,
+    ],
     imports: [
         BrowserModule,
         MatToolbarModule,

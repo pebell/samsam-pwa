@@ -12,7 +12,7 @@ export class BedragenComponent implements OnInit {
 
     user$ = this.backend.portalUser$;
 
-    dataDump$ = this.user$.map(u => JSON.stringify(u, null, 2));
+    // dataDump$ = this.user$.map(u => JSON.stringify(u, null, 2));
 
     ngOnInit(): void {}
 }
