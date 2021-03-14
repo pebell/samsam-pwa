@@ -8,10 +8,11 @@ import { NgxSherlockModule } from '@politie/ngx-sherlock';
 import { DatadumpComponent } from './datadump/datadump.component';
 import { BufferComponent } from './buffer/buffer.component';
 import { ComponentsModule } from '../components/components.module';
+import { PromoComponent } from './promo/promo.component';
 
 @NgModule({
-    declarations: [StatusComponent, MaandbedragComponent, DatadumpComponent, BufferComponent],
-    exports: [StatusComponent, MaandbedragComponent, DatadumpComponent, BufferComponent],
+    declarations: [StatusComponent, MaandbedragComponent, DatadumpComponent, BufferComponent, PromoComponent],
+    exports: [StatusComponent, MaandbedragComponent, DatadumpComponent, BufferComponent, PromoComponent],
     imports: [CommonModule, MatCardModule, NgApexchartsModule, NgxSherlockModule, ComponentsModule],
 })
 export class WidgetsModule {}
