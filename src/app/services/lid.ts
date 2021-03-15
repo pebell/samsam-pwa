@@ -39,6 +39,7 @@ export interface PortalUser {
     kring: Kring;
     kringenOverzicht: KringOverzicht[];
     saldoTotalen: SaldoTotalen;
+    transacties: Transactie[];
 }
 
 export interface SaldoTotalen {
@@ -64,4 +65,13 @@ export interface Verklaringen {
     verklaring4: string;
     verklaring5: string;
     verklaringnb: string;
+}
+export interface Transactie {
+    type: string;
+    amount: number;
+    period: string;
+    period_seq?: number;
+    IBAN_from: string;
+    transaction_date: string;
+    confirmed: boolean;
 }

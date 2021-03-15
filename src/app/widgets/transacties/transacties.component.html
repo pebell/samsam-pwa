@@ -1,0 +1,16 @@
+<mat-card>
+    <mat-card-title>Transactie Overzicht</mat-card-title>
+    <mat-card-content>
+        <table>
+            <ng-template ngFor let-period [ngForOf]="periods$ | value">
+                <tr class="spacer"></tr>
+                <tr class="periode"><td colspan=3>Periode {{ period.period}} </td></tr>
+                <tr *ngFor="let trans of period.transacties" [class.unconfirmed]="!trans.confirmed">
+                    <td>{{trans.date }}</td>
+                    <td>{{trans.type }}</td>
+                    <td class="amount">{{trans.amount }}</td>
+                </tr>
+            </ng-template>
+        </table>
+</mat-card-content>
+</mat-card>

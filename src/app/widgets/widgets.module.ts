@@ -10,10 +10,27 @@ import { BufferComponent } from './buffer/buffer.component';
 import { ComponentsModule } from '../components/components.module';
 import { PromoComponent } from './promo/promo.component';
 import { NgswComponent } from './ngsw/ngsw.component';
+import { TransactiesComponent } from './transacties/transacties.component';
 
 @NgModule({
-    declarations: [StatusComponent, MaandbedragComponent, DatadumpComponent, BufferComponent, PromoComponent, NgswComponent],
-    exports: [StatusComponent, MaandbedragComponent, DatadumpComponent, BufferComponent, PromoComponent, NgswComponent],
+    declarations: [
+        StatusComponent,
+        MaandbedragComponent,
+        DatadumpComponent,
+        BufferComponent,
+        PromoComponent,
+        NgswComponent,
+        TransactiesComponent,
+    ],
+    exports: [
+        StatusComponent,
+        MaandbedragComponent,
+        DatadumpComponent,
+        BufferComponent,
+        PromoComponent,
+        NgswComponent,
+        TransactiesComponent,
+    ],
     imports: [CommonModule, MatCardModule, NgApexchartsModule, NgxSherlockModule, ComponentsModule],
 })
 export class WidgetsModule {}
